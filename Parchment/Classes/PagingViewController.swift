@@ -197,6 +197,32 @@ open class PagingViewController<T: PagingItem>:
     get { return options.menuBackgroundColor }
     set { options.menuBackgroundColor = newValue }
   }
+    
+    // Shadow options
+    public var isMenuWithShadow: Bool {
+        get { return options.isMenuWithShadow }
+        set { options.isMenuWithShadow = newValue }
+    }
+    
+    public var menuShadowRadius: CGFloat {
+        get { return options.menuShadowRadius }
+        set { options.menuShadowRadius = newValue }
+    }
+    
+    public var menuShadowOpacity: Float {
+        get { return options.menuShadowOpacity }
+        set { options.menuShadowOpacity = newValue }
+    }
+    
+    public var menuShadowColor: UIColor {
+        get { return options.menuShadowColor }
+        set { options.menuShadowColor = newValue }
+    }
+    
+    public var menuShadowOffset: CGFloat {
+        get { return options.menuShadowOffset }
+        set { options.menuShadowOffset = newValue }
+    }
   
   /// The current state of the menu items. Indicates whether an item
   /// is currently selected or is scrolling to another item. Can be

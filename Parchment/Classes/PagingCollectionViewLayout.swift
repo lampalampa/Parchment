@@ -305,21 +305,35 @@ open class PagingCollectionViewLayout<T: PagingItem>:
     self.layoutAttributes = layoutAttributes
   }
   
-  private func createDecorationLayoutAttributes() {
-    if case .visible = options.indicatorOptions {
-      indicatorLayoutAttributes = PagingIndicatorLayoutAttributes(
-        forDecorationViewOfKind: PagingIndicatorKind,
-        with: IndexPath(item: 0, section: 0))
-      indicatorLayoutAttributes?.configure(options)
+    private func createDecorationLayoutAttributes() {
+        if case .visible = options.indicatorOptions {
+            indicatorLayoutAttributes = PagingIndicatorLayoutAttributes(
+                forDecorationViewOfKind: PagingIndicatorKind,
+                with: IndexPath(item: 0, section: 0))
+            indicatorLayoutAttributes?.configure(options)
+        }
+        
+        if case .visible = options.borderOptions {
+            borderLayoutAttributes = PagingBorderLayoutAttributes(
+                forDecorationViewOfKind: PagingBorderKind,
+                with: IndexPath(item: 1, section: 0))
+            borderLayoutAttributes?.configure(options)
+        }
+        
+        if options.isMenuWithShadow {
+            if let collectionView = self.collectionView {
+                addShadow(collectionView)
+            }
+        }
     }
     
-    if case .visible = options.borderOptions {
-      borderLayoutAttributes = PagingBorderLayoutAttributes(
-        forDecorationViewOfKind: PagingBorderKind,
-        with: IndexPath(item: 1, section: 0))
-      borderLayoutAttributes?.configure(options)
+    private func addShadow(_ view: UIView) {
+        view.layer.shadowColor = options.menuShadowColor.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: options.menuShadowOffset)
+        view.layer.masksToBounds = false
+        view.layer.shadowRadius = options.menuShadowRadius
+        view.layer.shadowOpacity = options.menuShadowOpacity
     }
-  }
   
   private func updateBorderLayoutAttributes() {
     borderLayoutAttributes?.update(

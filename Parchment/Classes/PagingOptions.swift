@@ -25,6 +25,13 @@ public class PagingOptions {
   public var borderColor: UIColor
   public var indicatorColor: UIColor
   
+    //Shadow
+    public var isMenuWithShadow: Bool
+    public var menuShadowRadius: CGFloat
+    public var menuShadowOpacity: Float
+    public var menuShadowColor: UIColor
+    public var menuShadowOffset: CGFloat
+    
   public var scrollPosition: UICollectionViewScrollPosition {
     switch selectedScrollPosition {
     case .left:
@@ -83,5 +90,12 @@ public class PagingOptions {
     menuBackgroundColor = UIColor.white
     borderColor = UIColor(white: 0.9, alpha: 1)
     indicatorColor = UIColor(red: 3/255, green: 125/255, blue: 233/255, alpha: 1)
-  }
+  
+    //Shadow
+    isMenuWithShadow = false
+    menuShadowRadius = 0
+    menuShadowOpacity = 0
+    menuShadowColor = UIColor.clear
+    menuShadowOffset = 0
+    }
 }
